@@ -1,0 +1,55 @@
+Module999999Name = GSync
+Module999999Desc = GSync Description
+
+ATMAbout = Ce module a été développé par <a href="http://www.atm-consulting.fr" target="_blank">ATM Consulting</a><br>Vous pouvez retrouver la documentation sur notre <a href="http://wiki.atm-consulting.fr/index.php/Accueil" target="_blank">wiki</a><br><br>Pour toute question technique ou retour, contactez-nous sur <a href="mailto:support@atm-consulting.fr">support@atm-consulting.fr</a><br><br>Pour toute question commerciale, contactez-nous sur <a href="mailto:contact@atm-consulting.fr">contact@atm-consulting.fr</a> ou au +33 9 77 19 50 70<br><br>Retrouvez nos autres modules sur <a href="http://www.dolistore.com/search.php?orderby=position&orderway=desc&search_query=atm&submit_search=Rechercher" target="_blank">Dolistore</a>
+
+GSyncSetup = Configuration du module GSync
+GSyncAbout = A propos du module GSync
+
+GSync=GSync
+AbricotNeedUpdate=Le module abricot doit être mis à jour
+LinkToThirparty=Lien vers le tiers
+
+# SETUP
+ParamLabel=Nom du paramètre
+ParamDesc=Une description si besoin
+ParamHelp=Le contenu de l'aide
+
+# MENU
+TopMenuGSync=GSync
+
+# STATUS
+GSyncStatusCanceled=Abandonnée (fermée)
+GSyncStatusDraft=Brouillon (à valider)
+GSyncStatusValidated=Validée (à accepter)
+GSyncStatusRefused=Refusée (fermée)
+GSyncStatusAccepted=Acceptée (fermée)
+
+GSyncStatusShortCanceled=Abandonnée
+GSyncStatusShortDraft=Brouillon
+GSyncStatusShortValidated=Validée
+GSyncStatusShortRefused=Refusée
+GSyncStatusShortAccepted=Acceptée
+
+# LIST
+GSyncList=Liste GSync
+NoGSync=(vide)
+
+# CARD
+NewGSync=Création GSync
+GSyncCard=Fiche GSync
+
+GSyncModify=Modifier
+GSyncClone=Cloner
+GSyncValid=Valider
+GSyncAccept=Accepter
+GSyncRefuse=Refuser
+GSyncReopen=Rouvrir
+GSyncCancel=Abandonner
+GSyncDelete=Supprimer
+
+ConfirmValidateGSyncTitle=Confirmation d'activation
+ConfirmValidateGSyncBody=Souhaitez-vous vraiment activer cette fiche GSync %s ?
+
+ConfirmDeleteGSyncTitle=Confirmation de suppression
+ConfirmDeleteGSyncBody=Souhaitez-vous vraiment supprimer cette fiche GSync %s ?
