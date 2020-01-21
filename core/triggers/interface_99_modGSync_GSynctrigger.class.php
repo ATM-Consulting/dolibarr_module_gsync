@@ -134,6 +134,36 @@ class InterfaceGSynctrigger
         // Put here code you want to execute when a Dolibarr business events occurs.
         // Data and type of action are stored into $object and $action
         // Users
+        if (
+            in_array($action, array('COMPANY_MODIFY', 'COMPANY_CREATE')) && !empty($conf->global->GSYNC_THIRDPARTY)
+            || in_array($action, array('CONTACT_MODIFY', 'CONTACT_CREATE')) && !empty($conf->global->GSYNC_CONTACT)
+            || in_array($action, array('USER_MODIFY', 'USER_CREATE')) && !empty($conf->global->GSYNC_USER)
+        )
+        {
+            if (!defined('INC_FROM_DOLIBARR')) define('INC_FROM_DOLIBARR', 1);
+            dol_include_once('gsync/config.php');
+            dol_include_once('gsync/class/gsync.class.php');
+
+            $gsync = new GSync($this->db);
+            if ($gsync->fetchBy($user->id, 'fk_user') > 0)
+            {
+                $to_sync = GSyncPeople::allowedToSync($object->id, $object->element, $user->id);
+                if ($to_sync)
+                {
+                    $gsync_people = new GSyncPeople($this->db);
+                    $gsync_people->fetchFullBy(array('fk_user' => $user->id, 'fk_object' => $object->id, 'element_object' => $object->element));
+
+                    $gsync_people->fk_user = $user->id;
+                    $gsync_people->fk_object = $object->id;
+                    $gsync_people->element_object = $object->element;
+                    $gsync_people->to_sync = 1;
+                    $gsync_people->save($user);
+
+                    return 1;
+                }
+            }
+        }
+
         if ($action == 'USER_LOGIN') {
             dol_syslog(
                 "Trigger '" . $this->name . "' for action '$action' launched by " . __FILE__ . ". id=" . $object->id

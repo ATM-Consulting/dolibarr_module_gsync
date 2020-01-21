@@ -106,17 +106,23 @@ if(!function_exists('setup_print_title')){
     exit;
 }
 
-setup_print_title("Parameters");
+setup_print_title("Parameters", 600);
 
 // Example with a yes / no select
-setup_print_on_off('CONSTNAME', $langs->trans('ParamLabel'), 'ParamDesc');
+//setup_print_on_off('CONSTNAME', $langs->trans('ParamLabel'), 'ParamDesc');
 
 // Example with imput
-setup_print_input_form_part('CONSTNAME', $langs->trans('ParamLabel'));
+//setup_print_input_form_part('CONSTNAME', $langs->trans('ParamLabel'));
 
-// Example with color
-setup_print_input_form_part('CONSTNAME', $langs->trans('ParamLabel'), 'ParamDesc', array('type'=>'color'), 'input', 'ParamHelp');
+setup_print_input_form_part('GSYNC_CLIENT_ID', $langs->trans('GSYNC_CLIENT_ID'), $langs->trans('GSYNC_CLIENT_ID_DESC', dol_buildpath('/', 2), dol_buildpath('gsync/redirect-handler.php')), array('size' => 50));
 
+setup_print_input_form_part('GSYNC_CLIENT_SECRET', $langs->trans('GSYNC_CLIENT_SECRET'), '', array('size' => 30));
+
+setup_print_on_off('GSYNC_THIRDPARTY');
+setup_print_on_off('GSYNC_CONTACT');
+setup_print_on_off('GSYNC_USER');
+
+setup_print_on_off('GSYNC_ONLY_ATTACHED_AS_COMMERCIAL', false, '', 'GSYNC_ONLY_ATTACHED_AS_COMMERCIAL_HELP');
 // Example with placeholder
 //setup_print_input_form_part('CONSTNAME',$langs->trans('ParamLabel'),'ParamDesc',array('placeholder'=>'http://'),'input','ParamHelp');
 

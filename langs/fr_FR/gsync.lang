@@ -8,48 +8,32 @@ GSyncAbout = A propos du module GSync
 
 GSync=GSync
 AbricotNeedUpdate=Le module abricot doit être mis à jour
-LinkToThirparty=Lien vers le tiers
 
 # SETUP
 ParamLabel=Nom du paramètre
 ParamDesc=Une description si besoin
 ParamHelp=Le contenu de l'aide
 
-# MENU
-TopMenuGSync=GSync
+GSYNC_CLIENT_ID=ID client de l'application web
+GSYNC_CLIENT_ID_DESC=<b>console :</b> https://console.developers.google.com/apis/credentials<br /><b>API à activer :</b> people<br /><b>Hôte : </b>%s<br /><b>URI de redirection à autorisé : </b>%s
 
-# STATUS
-GSyncStatusCanceled=Abandonnée (fermée)
-GSyncStatusDraft=Brouillon (à valider)
-GSyncStatusValidated=Validée (à accepter)
-GSyncStatusRefused=Refusée (fermée)
-GSyncStatusAccepted=Acceptée (fermée)
+GSYNC_CLIENT_SECRET=Code secret du client
 
-GSyncStatusShortCanceled=Abandonnée
-GSyncStatusShortDraft=Brouillon
-GSyncStatusShortValidated=Validée
-GSyncStatusShortRefused=Refusée
-GSyncStatusShortAccepted=Acceptée
+GSYNC_THIRDPARTY=Synchroniser les tiers
+GSYNC_CONTACT=Synchroniser les contacts
+GSYNC_USER=Synchroniser les utilisateurs
 
-# LIST
-GSyncList=Liste GSync
-NoGSync=(vide)
+GSYNC_ONLY_ATTACHED_AS_COMMERCIAL=Limiter la synchronisation des tiers et/ou contacts uniquement si l'utilisateur est indiqué comme commercial du tiers
+GSYNC_ONLY_ATTACHED_AS_COMMERCIAL_HELP=Cette configuration est utile uniquement pour les utilisateurs ayant le droit "Étendre l'accès à tous les tiers"
 
-# CARD
-NewGSync=Création GSync
-GSyncCard=Fiche GSync
+# USER CARD
+GSync_group_id=GSync - Identifiant groupe Google
+GSync_group_id_help=Ceci vous permettra d'associer par défaut un groupe sur vos contacts issus de la synchronisation avec Dolibarr afin de les dissocier sur votre compte<br />Vous pouvez trouver cette valeur dans la barre d'adresse de votre navigateur lorsque que vous êtes sur votre page de contact Google et que vous filtrez par un libellé<br />Exemple : https://contacts.google.com/label/<b>123456789abcdefg</b>?hl=fr<br />L'identifiant est : 123456789abcdefg
+GSync_get_token=Récupérer un token Google
+GSync_refresh_token=Rafraichir le token Google
+GSync_current_token=Token acutellement en cours de validité : %s
+GSync_remove_token=Supprimer le token Google
+GSync_remove_token_title=Permet de faire une demande au service de Google afin de retirer les droits liés au token présent en base de données avant de supprimer celui-ci
 
-GSyncModify=Modifier
-GSyncClone=Cloner
-GSyncValid=Valider
-GSyncAccept=Accepter
-GSyncRefuse=Refuser
-GSyncReopen=Rouvrir
-GSyncCancel=Abandonner
-GSyncDelete=Supprimer
-
-ConfirmValidateGSyncTitle=Confirmation d'activation
-ConfirmValidateGSyncBody=Souhaitez-vous vraiment activer cette fiche GSync %s ?
-
-ConfirmDeleteGSyncTitle=Confirmation de suppression
-ConfirmDeleteGSyncBody=Souhaitez-vous vraiment supprimer cette fiche GSync %s ?
+# CRONJOB
+GSync_cron_job_label=GSync - Synchronisation vers google contacts

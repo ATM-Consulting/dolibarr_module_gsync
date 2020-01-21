@@ -28,11 +28,10 @@ if(!defined('INC_FROM_DOLIBARR')) {
 }
 
 
-/* uncomment
-
-
 dol_include_once('/gsync/class/gsync.class.php');
 
 $o=new GSync($db);
 $o->init_db_by_vars();
-*/
+
+$o=new GSyncPeople($db);
+$o->init_db_by_vars();

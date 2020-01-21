@@ -88,7 +88,14 @@ class modGSync extends DolibarrModules
 		//							'dir' => array('output' => 'othermodulename'),      // To force the default directories names
 		//							'workflow' => array('WORKFLOW_MODULE1_YOURACTIONTYPE_MODULE2'=>array('enabled'=>'! empty($conf->module1->enabled) && ! empty($conf->module2->enabled)', 'picto'=>'yourpicto@gsync')) // Set here all workflow context managed by module
 		//                        );
-		$this->module_parts = array();
+		$this->module_parts = array(
+		    'triggers' => 1
+            , 'hooks' => array(
+                'usercard'
+                , 'contactcard'
+                , 'thirdpartycard'
+            )
+        );
 
 		// Data directories to create when module is enabled.
 		// Example: this->dirs = array("/gsync/temp");
@@ -322,6 +329,26 @@ class modGSync extends DolibarrModules
 		// $this->export_sql_end[$r] .=' WHERE f.fk_soc = s.rowid AND f.rowid = fd.fk_facture';
 		// $this->export_sql_order[$r] .=' ORDER BY s.nom';
 		// $r++;
+
+
+        $langs->load('gsync@gsync');
+        $this->cronjobs = array(
+            0=>array(
+                'label'=>$langs->trans('GSync_cron_job_label')
+                ,'jobtype'=>'method'
+                ,'class'=>'/gsync/class/gsync.class.php'
+                ,'objectname'=>'GSync'
+                ,'method'=>'cronjob_nyancat'
+                ,'parameters'=>'20'
+                ,'comment'=>' '
+                ,'frequency'=>10 // tous les 10...
+                ,'unitfrequency'=>60 // ...minutes
+                ,'status'=>0
+                ,'test'=>'$conf->gsync->enabled'
+                ,'priority'=>80
+                ,'datestart'=>strtotime(date('Y-m-d 12:00:00'))
+            )
+        );
 	}
 
 	/**
@@ -334,6 +361,8 @@ class modGSync extends DolibarrModules
 	 */
 	public function init($options = '')
 	{
+	    global $conf, $langs, $user;
+
 		$sql = array();
 		
 		define('INC_FROM_DOLIBARR', true);
@@ -341,6 +370,11 @@ class modGSync extends DolibarrModules
 		require dol_buildpath('/gsync/script/create-maj-base.php');
 
 		$result=$this->_load_tables('/gsync/sql/');
+
+        // TODO create extrafields
+        require_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
+        $extrafield = new ExtraFields($this->db);
+        $extrafield->addExtraField('gsync_group_id', 'GSync_group_id', 'varchar', 850, '255', 'user', 0, 0, '', unserialize('a:1:{s:7:"options";a:1:{s:0:"";N;}}'), 1, '', 3, 'GSync_group_id_help', '', $conf->entity, 'gsync@gsync', 1);
 
 		return $this->_init($sql, $options);
 	}
