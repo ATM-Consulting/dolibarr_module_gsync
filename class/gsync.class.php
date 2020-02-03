@@ -112,19 +112,21 @@ class GSync extends SeedObject
     }
 
     /**
-     * @param User $user User object
-     * @return int
+     * @param   User    $user       User object
+	 * @param	bool	$notrigger	false=launch triggers after, true=disable triggers
+     * @return  int
      */
-    public function save($user)
+    public function save($user, $notrigger = false)
     {
-        return $this->create($user);
+        return $this->create($user, $notrigger);
     }
 
     /**
-     * @param User $user User object
-     * @return int
+     * @param   User    $user		User object
+	 * @param	bool	$notrigger	false=launch triggers after, true=disable triggers
+     * @return  int
      */
-    public function delete(User &$user)
+    public function delete(User &$user, $notrigger = false)
     {
         // Les objets GSyncPeople ne sont pas liés directement pour des raisons de performance, il faut donc les delete manuellements
         $sql = 'DELETE FROM '.MAIN_DB_PREFIX.'gsync_people WHERE fk_user = '.$this->fk_user;
@@ -133,7 +135,7 @@ class GSync extends SeedObject
         $this->deleteObjectLinked();
 
         unset($this->fk_element); // avoid conflict with standard Dolibarr comportment
-        return parent::delete($user);
+        return parent::delete($user, $notrigger);
     }
 
     /**
@@ -310,24 +312,26 @@ class GSyncPeople extends SeedObject
     }
 
     /**
-     * @param User $user User object
-     * @return int
+     * @param   User    $user       User object
+	 * @param	bool	$notrigger	false=launch triggers after, true=disable triggers
+     * @return  int
      */
-    public function save($user)
+    public function save($user, $notrigger = false)
     {
-        return $this->create($user);
+        return $this->create($user, $notrigger);
     }
 
     /**
-     * @param User $user User object
-     * @return int
+     * @param   User    $user       User object
+	 * @param	bool	$notrigger	false=launch triggers after, true=disable triggers
+     * @return  int
      */
-    public function delete(User &$user)
+    public function delete(User &$user, $notrigger = false)
     {
         $this->deleteObjectLinked();
 
         unset($this->fk_element); // avoid conflict with standard Dolibarr comportment
-        return parent::delete($user);
+        return parent::delete($user, $notrigger);
     }
 
     /**
