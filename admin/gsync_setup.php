@@ -114,7 +114,7 @@ setup_print_title("Parameters", 600);
 // Example with imput
 //setup_print_input_form_part('CONSTNAME', $langs->trans('ParamLabel'));
 
-setup_print_input_form_part('GSYNC_CLIENT_ID', $langs->trans('GSYNC_CLIENT_ID'), $langs->trans('GSYNC_CLIENT_ID_DESC', dol_buildpath('/', 2), dol_buildpath('gsync/redirect-handler.php')), array('size' => 50));
+setup_print_input_form_part('GSYNC_CLIENT_ID', $langs->trans('GSYNC_CLIENT_ID'), $langs->trans('GSYNC_CLIENT_ID_DESC', dol_buildpath('/', 2), dol_buildpath('gsync/redirect-handler.php', 2)), array('size' => 50));
 
 setup_print_input_form_part('GSYNC_CLIENT_SECRET', $langs->trans('GSYNC_CLIENT_SECRET'), '', array('size' => 30));
 
