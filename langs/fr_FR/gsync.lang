@@ -15,7 +15,7 @@ ParamDesc=Une description si besoin
 ParamHelp=Le contenu de l'aide
 
 GSYNC_CLIENT_ID=ID client de l'application web
-GSYNC_CLIENT_ID_DESC=<b>console :</b> https://console.developers.google.com/apis/credentials<br /><b>API à activer :</b> people<br /><b>Hôte : </b>%s<br /><b>URI de redirection à autorisé : </b>%s
+GSYNC_CLIENT_ID_DESC=<b>console :</b> https://console.developers.google.com/apis/credentials<br /><b>API à activer :</b> people<br /><b>Hôte : </b>%s<br /><b>URI de redirection à autoriser : </b>%s
 
 GSYNC_CLIENT_SECRET=Code secret du client
 
